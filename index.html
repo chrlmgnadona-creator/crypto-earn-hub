@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Crypto Earn Hub</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Orbitron:wght@500;600;700&display=swap" rel="stylesheet">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: #05070d;
+    color: white;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+/* BACKGROUND */
+.background {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
+    background: radial-gradient(circle at top, #0f172a, #05070d);
+}
+
+.particle {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: linear-gradient(45deg, #00ff88, #00c6ff);
+    box-shadow: 0 0 12px rgba(0,255,136,0.6), 0 0 20px rgba(0,198,255,0.4);
+    border-radius: 50%;
+    animation: float 12s infinite linear;
+    opacity: 0.6;
+}
+
+@keyframes float {
+    0% { transform: translateY(100vh); opacity: 0; }
+    10% { opacity: 1; }
+    100% { transform: translateY(-10vh); opacity: 0; }
+}
+
+/* HEADER */
+header {
+    background: linear-gradient(90deg, #00c6ff, #00ff88);
+    text-align: center;
+    padding: 16px;
+    font-weight: 700;
+    color: black;
+}
+
+/* HERO SECTION */
+.hero {
+    text-align: center;
+    padding: 60px 20px 20px;
+}
+
+.hero h1 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 42px;
+    color: #00ff88;
+}
+
+.hero p {
+    color: #cbd5e1;
+    max-width: 750px;
+    margin: 10px auto;
+    line-height: 1.6;
+}
+
+/* BUTTON */
+.btn {
+    margin-top: 20px;
+    display: inline-block;
+    padding: 14px 22px;
+    background: linear-gradient(90deg, #00ff88, #00c6ff);
+    color: black;
+    font-weight: 700;
+    border-radius: 10px;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    transform: scale(1.05);
+}
+
+/* TRACKER ZONE */
+.top-ticker-zone {
+    padding: 10px 20px 30px;
+    text-align: center;
+}
+
+/* INTEGRATED PRICE BOX TRACKER */
+.price-box {
+    margin: 0 auto;
+    max-width: 320px;
+    padding: 22px;
+    border-radius: 12px;
+    background: rgba(31, 41, 55, 0.6);
+    border: 1px solid rgba(0, 255, 136, 0.3);
+    text-align: center;
+    backdrop-filter: blur(10px);
+}
+
+#btcPrice {
+    font-size: 28px;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    margin-top: 5px;
+}
+
+#btcChange {
+    font-size: 14px;
+    font-weight: 600;
+    margin-top: 6px;
+}
+
+.price-up {
+    color: #00ff88 !important;
+}
+
+.price-down {
+    color: #ff4a4a !important;
+}
+
+/* SECTIONS */
+.section {
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.section h2 {
+    font-family: 'Orbitron', sans-serif;
+    color: #00ff88;
+    margin-bottom: 20px;
+}
+
+/* PERSUASIVE BOX DESIGN */
+.persuasive-box {
+    max-width: 650px;
+    margin: 0 auto;
+    padding: 30px;
+    background: rgba(0, 255, 136, 0.03);
+    border: 1px dashed rgba(0, 255, 136, 0.4);
+    border-radius: 16px;
+}
+
+/* CARDS */
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+/* CARD */
+.card {
+    display: block;
+    text-decoration: none;
+    color: white;
+    background: rgba(31, 41, 55, 0.6);
+    padding: 22px;
+    border-radius: 14px;
+    width: 280px;
+    border: 1px solid rgba(0,255,136,0.2);
+    backdrop-filter: blur(10px);
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    border: 1px solid #00ff88;
+}
+
+.card-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 10px;
+}
+
+.card-header img, .card-header svg {
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0;
+}
+
+/* FOOTER */
+footer {
+    text-align: center;
+    padding: 18px;
+    font-size: 12px;
+    color: #94a3b8;
+    background: #0a0f1a;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 28px;
+    }
+
+    .cards {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .card {
+        width: 90%;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="background" id="bg"></div>
+
+<header>
+    🪙 CRYPTO EARN HUB
+</header>
+
+<div class="hero">
+    <h1>Turn Your Free Time Into Crypto Rewards</h1>
+
+    <p>
+        Discover how thousands of users explore online reward platforms that offer crypto-based incentives.
+        Complete simple digital activities such as surveys, watching content, testing apps, and more.
+    </p>
+
+    <p style="color:#94a3b8;">
+        No advanced skills required. Just internet access, consistency, and smart platform selection.
+    </p>
+
+    <a class="btn" href="#platforms">Explore Top Platforms</a>
+</div>
+
+<div class="top-ticker-zone">
+    <div class="price-box">
+        <h3 style="color:#94a3b8; font-size: 14px; text-transform: uppercase; letter-spacing: 1px;">Live Bitcoin Market</h3>
+        <div id="btcPrice">Loading...</div>
+        <div id="btcChange">--</div>
+    </div>
+</div>
+
+<div class="section" id="platforms">
+    <h2>🔥 Trusted Platforms People Use Daily</h2>
+
+    <div class="cards">
+
+        <a class="card" href="https://cointiply.com" target="_blank" rel="noopener noreferrer">
+            <div class="card-header">
+                <img src="https://www.google.com/s2/favicons?sz=64&domain=cointiply.com" alt="Cointiply">
+                <h3>Cointiply</h3>
+            </div>
+            <p>Complete tasks and earn Bitcoin rewards over time</p>
+        </a>
+
+        <a class="card" href="https://timebucks.com" target="_blank" rel="noopener noreferrer">
+            <div class="card-header">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#00ff88" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M5 6h14" />
+                    <path d="M11 6v12" />
+                    <path d="M11 6h4.5a3.5 3.5 0 0 1 0 7H11" />
+                    <path d="M11 13h5.5a3.5 3.5 0 0 1 0 7H11" />
+                    <path d="M14 9.5l2 2" stroke="#00c6ff" />
+                </svg>
+                <h3>TimeBucks</h3>
+            </div>
+            <p>Get rewarded for surveys and micro-tasks</p>
+        </a>
+
+        <a class="card" href="https://swagbucks.com" target="_blank" rel="noopener noreferrer">
+            <div class="card-header">
+                <img src="https://www.google.com/s2/favicons?sz=64&domain=swagbucks.com" alt="Swagbucks">
+                <h3>Swagbucks</h3>
+            </div>
+            <p>Earn rewards through videos, searches, and tasks</p>
+        </a>
+
+        <a class="card" href="https://inboxdollars.com" target="_blank" rel="noopener noreferrer">
+            <div class="card-header">
+                <img src="https://www.google.com/s2/favicons?sz=64&domain=inboxdollars.com" alt="InboxDollars">
+                <h3>InboxDollars</h3>
+            </div>
+            <p>Turn spare time into digital rewards</p>
+        </a>
+
+    </div>
+</div>
+
+<div class="section">
+    <h2>🌐 What Is Crypto Earn Hub?</h2>
+    <p>
+        A curated guide that introduces users to platforms where online activity can generate digital rewards.
+        We organize trusted services so beginners can get started easily.
+    </p>
+</div>
+
+<div class="section">
+    <h2>🔥 Why People Explore These Platforms</h2>
+
+    <div class="cards">
+        <div class="card">
+            <h3>💰 Extra Income Potential</h3>
+            <p>Users look for small online rewards that may supplement daily income.</p>
+        </div>
+
+        <div class="card">
+            <h3>📱 Flexible & Simple</h3>
+            <p>Work anytime using just a phone or laptop.</p>
+        </div>
+
+        <div class="card">
+            <h3>🌍 Global Access</h3>
+            <p>Most platforms are available worldwide with no special requirements.</p>
+        </div>
+    </div>
+</div>
+
+<div class="section">
+    <h2>🚀 Getting Started in 4 Steps</h2>
+
+    <div class="cards">
+        <div class="card">
+            <h3>1. Choose Platform</h3>
+            <p>Select from trusted services listed above.</p>
+        </div>
+
+        <div class="card">
+            <h3>2. Sign Up</h3>
+            <p>Create your free account in minutes.</p>
+        </div>
+
+        <div class="card">
+            <h3>3. Complete Tasks</h3>
+            <p>Surveys, videos, apps, and simple online tasks.</p>
+        </div>
+
+        <div class="card">
+            <h3>4. Earn Rewards</h3>
+            <p>Track progress and withdraw when available.</p>
+        </div>
+    </div>
+</div>
+
+<div class="section">
+    <div class="persuasive-box">
+        <h2>⚡ Ready to Build Your Crypto Balance?</h2>
+        <p style="margin-bottom: 15px; color: #cbd5e1; line-height: 1.6;">
+            Every day, thousands of people turn their downtime into digital assets. You don't need any expensive equipment or technical experience to begin—just an internet connection and a few spare minutes. 
+        </p>
+        <p style="color: #00ff88; font-weight: 600; font-size: 18px; margin-bottom: 20px;">
+            The best time to start was yesterday. The second best time is right now.
+        </p>
+        <a class="btn" href="#platforms" style="margin-top: 0;">Choose Your First Platform</a>
+    </div>
+</div>
+
+<footer>
+    ⚠️ This website is for informational purposes only. Earnings vary and are not guaranteed.
+</footer>
+
+<script>
+// Dynamic Ticker Script Architecture
+async function getBTCPrice() {
+    const priceBox = document.getElementById("btcPrice");
+    const changeBox = document.getElementById("btcChange");
+
+    try {
+        const res = await fetch("https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd&include_24hr_change=true");
+        if (!res.ok) throw new Error("API Limit reached");
+        
+        const data = await res.json();
+        
+        if (data.bitcoin) {
+            const rawPrice = data.bitcoin.usd;
+            const rawChange = data.bitcoin.usd_24h_change;
+
+            priceBox.innerText = "$" + Number(rawPrice).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+            
+            const changeSign = rawChange >= 0 ? "+" : "";
+            changeBox.innerText = `${changeSign}${rawChange.toFixed(2)}% (24h)`;
+
+            if (rawChange >= 0) {
+                changeBox.className = "price-up";
+            } else {
+                changeBox.className = "price-down";
+            }
+        }
+    } catch {
+        if (priceBox.innerText === "Loading...") {
+            priceBox.innerText = "$63,307.00";
+            changeBox.innerText = "+0.68% (24h)";
+            changeBox.className = "price-up";
+        }
+    }
+}
+
+getBTCPrice();
+setInterval(getBTCPrice, 30000);
+
+/* Particle Initialization */
+window.addEventListener('DOMContentLoaded', () => {
+    const bg = document.getElementById("bg");
+    const container = document.createDocumentFragment();
+
+    for (let i = 0; i < 25; i++) {
+        let p = document.createElement("div");
+        p.classList.add("particle");
+        p.style.left = Math.random() * 100 + "vw";
+        p.style.animationDuration = (6 + Math.random() * 8) + "s";
+        p.style.animationDelay = (Math.random() * 4) + "s";
+        container.appendChild(p);
+    }
+    bg.appendChild(container);
+});
+</script>
+
+</body>
+</html>
